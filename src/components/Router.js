@@ -19,11 +19,16 @@ export default class Router extends Component {
             return <Confirmacion id={id} />
         }
 
+        function HomeComponentElement() {
+            let {cancelar} = useParams();
+            return <HomeComponent cancelar={cancelar}/>
+        }
+
         return (
             <BrowserRouter>
                 <MenuComponent />
                 <Routes>
-                    <Route path='/' element={<HomeComponent />} />
+                    <Route path='/:cancelar?' element={<HomeComponentElement />} />
                     <Route path='/create' element={<CreateDepartamento />} />
                     <Route path='/update/:id/:nombre/:localidad' element={<UpdateDepartamentoElement />} />
                     <Route path='/confirmacion/:id' element={<ConfirmacionElement />} />

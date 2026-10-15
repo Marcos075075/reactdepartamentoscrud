@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import ServiceDepartamentos from '../services/ServiceDepartamentos';
-import { Navigate } from 'react-router-dom';
+import { Navigate, NavLink } from 'react-router-dom';
 
 export default class Confirmacion extends Component {
     service = new ServiceDepartamentos();
 
     state = {
         status:false,
-        status2:false
     }
     
     eliminarDepartamento = () => {
@@ -18,27 +17,20 @@ export default class Confirmacion extends Component {
         
         })
     }
-
-    cancelar = () => {
-        this.setState({
-            status: true
-        })
-    }
-
   render() {
     return (
       <div>
         {
             this.state.status == true &&
-            (<Navigate to="/" />)
+            (<Navigate to="/"/>)
         }
         <h1>¿Estas seguro de que quieres eliminarlo? Si aceptas no habra marcha atras</h1>
         <button className='btn btn-danger' onClick={() => {this.eliminarDepartamento()}}>
             Aceptar
         </button>
-        <button className='btn btn-warning' onClick={() => {this.cancelar()}}>
+        <NavLink className='btn btn-warning' to={"/" + true}>
             Cancelar
-        </button>
+        </NavLink>
       </div>
     )
   }

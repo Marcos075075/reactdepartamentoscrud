@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import loading from "../assets/images/loading.png"
 import ServiceDepartamentos from '../services/ServiceDepartamentos'
 import { NavLink } from 'react-router-dom';
+import Global from '../Global';
 
 export default class HomeComponent extends Component {
     service = new ServiceDepartamentos();
@@ -13,6 +14,7 @@ export default class HomeComponent extends Component {
 
     loadDepartamentos = () => {
         this.service.getDepartamentos().then((result) => {
+            Global.departamentos = result;
             this.setState({
                 departamentos: result,
                 status: true
@@ -20,15 +22,15 @@ export default class HomeComponent extends Component {
         })
     }
 
-    // eliminarDepartamento = (id) => {
-    //     this.service.deleteDepartamentos(id).then(result =>{
-    //         this.loadDepartamentos();
-    //     })
-    // }
+
 
     componentDidMount = () => {
-        if (this.props.cancel == true) {
+        if (this.props.cancelar === "true") {
             console.log("Se ha cancelado");
+            this.setState({
+                departamentos: Global.departamentos,
+                status: true
+            })
         } else{
         this.loadDepartamentos();
         }
