@@ -5,6 +5,7 @@ import HomeComponent from './HomeComponent'
 import CreateDepartamento from './CreateDepartamento'
 import UpdateDepartamento from './UpdateDepartamento'
 import Confirmacion from './Confirmacion'
+import HospitalesMultiple from './HospitalesMultiple'
 
 export default class Router extends Component {
     render() {
@@ -32,6 +33,7 @@ export default class Router extends Component {
                     <Route path='/create' element={<CreateDepartamento />} />
                     <Route path='/update/:id/:nombre/:localidad' element={<UpdateDepartamentoElement />} />
                     <Route path='/confirmacion/:id' element={<ConfirmacionElement />} />
+                    <Route path='/hospitales' element={<HospitalesMultiple />} />
                 </Routes>
             </BrowserRouter>
         )
