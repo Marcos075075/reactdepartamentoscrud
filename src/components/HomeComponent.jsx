@@ -25,7 +25,7 @@ export default class HomeComponent extends Component {
 
 
     componentDidMount = () => {
-        if (this.props.cancelar === "true") {
+        if (this.props.cancelar === "true" && Global.departamentos.length > 0) {
             console.log("Se ha cancelado");
             this.setState({
                 departamentos: Global.departamentos,
